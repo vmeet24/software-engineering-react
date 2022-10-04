@@ -3,7 +3,7 @@ const TuitImage = ({tuit}) => {
   return(
     <div className="position-relative">
       <img src={`../images/${tuit.image}`}
-           className="mt-2 w-100 ttr-rounded-15px"/>
+           className="mt-2 w-100 ttr-rounded-15px" alt="ttr"/>
       {
         tuit.imageOverlay &&
         <span

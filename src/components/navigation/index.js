@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./navigation.css";
 import {useLocation, Link} from "react-router-dom";
