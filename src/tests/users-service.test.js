@@ -113,24 +113,24 @@ describe('findAllUsers', () => {
   ];
 
   // setup data before test
-  beforeEach(async () =>
+  beforeEach(async () => {
     // insert several known users
-    usernames.forEach(async (username) =>
+    for (const username of usernames) {
       await createUser({
         username: username,
         password: `${username}123`,
         email: `${username}@stooges.com`
       })
-    )
-  );
+    }
+  });
 
   // clean up after ourselves
-  afterEach(async () =>
+  afterEach(async () => {
     // delete the users we inserted
-    usernames.forEach(async (username) =>
+    for (const username of usernames) {
       await deleteUsersByUsername(username)
-    )
-  );
+    }
+  });
 
   test('can retrieve all users from REST API', async () => {
     // retrieve all the users

@@ -101,40 +101,35 @@ describe('can retrieve all tuits with REST API', () => {
     email: 'ellenripley@aliens.com'
   };
 
-  const mapTuitString = ['Tuit1', 'Tuit2', 'Tuit3'];
-  const mapTuitId = [];
+  const tuitsLst = [{ tuit: "Alice's tuit 1" }, { tuit: "Alice's tuit 2" }];
 
   beforeAll(async () => {
     const user = await createUser(ripley);
     ripley.uniqueId = user._id;
-
-    mapTuitString.map(async tuit => {
-      await createTuit(ripley.uniqueId,
-        {
-          tuit: `${tuit}`
-        }
-      );
-    })
+    console.log("uniqueId", ripley.uniqueId);
+    for (const tuit of tuitsLst) {
+      const newTuit = await createTuit(ripley.uniqueId, tuit);
+      tuit._id = newTuit._id;
+    }
   });
 
   afterAll(async () => {
-    await mapTuitId.forEach(tuit => {
-      deleteTuit(tuit);
-    });
+    for (const tuit of tuitsLst) {
+      await deleteTuit(tuit._id);
+    }
     await deleteUser(ripley.uniqueId);
   });
 
   test('can retrieve all tuits with REST API', async () => {
 
-    const findTuit = await findAllTuits();
-
-    const tuitsWeInserted = findTuit.filter(
-      tuit => mapTuitString.indexOf(tuit.tuit) >= 0);
-
-    tuitsWeInserted.forEach(tuit => {
-      const tuitName = mapTuitString.find(tuitName => tuitName === tuit.tuit);
-      expect(tuit.tuit).toEqual(tuitName);
-      mapTuitId.push(tuit._id);
+    const tuits = await findAllTuits();
+    const tuitsId = [];
+    tuits.forEach(tuit => {
+      tuitsId.push(tuit._id);
     });
+
+    tuits.forEach(tuit => {
+      expect(tuitsId.includes(tuit._id)).toBeTruthy();
+    })
   });
 });
