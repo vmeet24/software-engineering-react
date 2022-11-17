@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import * as service from "./tuits-service";
-import Tuits from "./tuits";
+import * as service from "../../services/tuits-service";
+import Tuits from "../tuits";
 
 const MyTuits = () => {
     const [tuits, setTuits] = useState([]);
     const findMyTuits = () =>
-        service.findTuitsByUser("me")
+        service.findTuitByUser("me")
             .then(tuits => setTuits(tuits));
     useEffect(findMyTuits, []);
     const deleteTuit = (tid) =>
