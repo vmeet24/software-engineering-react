@@ -96,16 +96,6 @@ const Profile = () => {
       <h6>@{profile.username}</h6>
       <button onClick={logout}>
         Logout</button>
-      <Routes>
-        <Route path="/mytuits"
-          element={<MyTuits />} />
-        {/* <Route path="/tuits-and-replies"
-          element={<TuitsAndReplies />} />
-        <Route path="/media"
-          element={<Media />} />
-        <Route path="/mylikes"
-          element={<MyLikes />} /> */}
-      </Routes>
     </div>
   );
 };
