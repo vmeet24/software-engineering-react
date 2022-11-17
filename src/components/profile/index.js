@@ -1,5 +1,6 @@
+import MyTuits from "./my-tuit"
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import * as service from "../../services/auth-service"
 // const Profile = () => {
 //   return(
@@ -95,6 +96,16 @@ const Profile = () => {
       <h6>@{profile.username}</h6>
       <button onClick={logout}>
         Logout</button>
+      <Routes>
+        <Route path="/mytuits"
+          element={<MyTuits />} />
+        {/* <Route path="/tuits-and-replies"
+          element={<TuitsAndReplies />} />
+        <Route path="/media"
+          element={<Media />} />
+        <Route path="/mylikes"
+          element={<MyLikes />} /> */}
+      </Routes>
     </div>
   );
 };
