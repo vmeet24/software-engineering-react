@@ -9,14 +9,17 @@ const MOCKED_TUITS = [
   {
     _id: "123",
     tuit: "Alice's tuit",
+    stats: { likes: 0 }
   },
   {
     _id: "234",
     tuit: "Bob's tuit",
+    stats: { likes: 0 }
   },
   {
     _id: "345",
     tuit: "Charlie's tuit",
+    stats: { likes: 0 }
   }
 ];
 
@@ -36,7 +39,7 @@ describe('tuit list renders async', () => {
     password: 'lv426',
     email: 'ellenripley@aliens.com'
   };
-  
+
   const tuit = {
     tuit: "ellenripley's Tuit",
   }
@@ -63,7 +66,7 @@ describe('tuit list renders async', () => {
 
     render(
       <HashRouter>
-        <Tuits tuits={getTuit} /> 
+        <Tuits tuits={getTuit} />
       </HashRouter>);
     const tuit = screen.getByText(/ellenripley's Tuit/i);
     expect(tuit).toBeInTheDocument();
