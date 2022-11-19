@@ -16,6 +16,7 @@ import {Login} from "../profile/login";
 import Movies from "../movies";
 import MovieDetails from "../movies/details";
 import Signup from "../profile/signup";
+import MyTuits from "../profile/my-tuit";
 
 function Tuiter () {
   return(
@@ -39,7 +40,8 @@ function Tuiter () {
               <Route path="/messages" element={<Messages/>}/>
               <Route path="/bookmarks" element={<Bookmarks/>}/>
               <Route path="/lists" element={<Lists/>}/>
-              <Route path="/profile/*" element={<Profile/>}/>
+              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/mytuits" element={<MyTuits/>}/>
               <Route path="/profile/edit" element={<EditProfile/>}/>
               <Route path="/movies" element={<Movies/>}/>
               <Route path="/movies/:imdbID" element={<MovieDetails/>}/>
