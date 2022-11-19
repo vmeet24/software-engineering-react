@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import * as service from "../../services/auth-service"
 import MyLikes from "./my-likes";
+import MyDislikes from "./my-dislikes";
 // const Profile = () => {
 //   return(
 //     <div className="ttr-profile">
@@ -104,12 +105,17 @@ const Profile = () => {
         <br />
         <Link to="/profile/mylikes">
           Likes</Link>
+        <br />
+        <Link to="/profile/mydislikes">
+          Dislikes</Link>
       </div>
       <Routes>
         <Route path="/mytuits"
           element={<MyTuits />} />
         <Route path="/mylikes"
           element={<MyLikes />} />
+        <Route path="/mydislikes"
+          element={<MyDislikes />} />
       </Routes>
     </div >
   );
