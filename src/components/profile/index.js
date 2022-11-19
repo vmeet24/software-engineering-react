@@ -1,7 +1,8 @@
 import MyTuits from "./my-tuit"
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import * as service from "../../services/auth-service"
+import MyLikes from "./my-likes";
 // const Profile = () => {
 //   return(
 //     <div className="ttr-profile">
@@ -86,6 +87,7 @@ const Profile = () => {
     }
     fetchProfile();
   }, []);
+
   const logout = () => {
     service.logout()
       .then(() => navigate('/login'));
@@ -96,7 +98,20 @@ const Profile = () => {
       <h6>@{profile.username}</h6>
       <button onClick={logout}>
         Logout</button>
-    </div>
+      <div className="p-2">
+        <Link to="/profile/mytuits">
+          Tuits</Link>
+        <br />
+        <Link to="/profile/mylikes">
+          Likes</Link>
+      </div>
+      <Routes>
+        <Route path="/mytuits"
+          element={<MyTuits />} />
+        <Route path="/mylikes"
+          element={<MyLikes />} />
+      </Routes>
+    </div >
   );
 };
 
