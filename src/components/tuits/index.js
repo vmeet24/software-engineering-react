@@ -10,6 +10,12 @@ function Tuits({ tuits = [], deleteTuit, refreshTuits }) {
       .then(refreshTuits)
       .catch(e => alert(e))
 
+  const dislikeTuit = (tuit) =>
+    likesService
+      .userDislikesTuit("me", tuit._id)
+      .then(refreshTuits)
+      .catch(e => alert(e))
+
   return (
     <div>
       <ul>
@@ -17,6 +23,7 @@ function Tuits({ tuits = [], deleteTuit, refreshTuits }) {
           tuits.map(tuit =>
             <Tuit key={tuit._id}
               deleteTuit={deleteTuit}
+              dislikeTuit={dislikeTuit}
               likeTuit={likeTuit}
               tuit={tuit} />)
         }

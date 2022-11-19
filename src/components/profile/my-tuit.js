@@ -12,7 +12,7 @@ const MyTuits = () => {
         service.deleteTuit(tid)
             .then(findMyTuits);
     return (
-        <Tuits tuits={tuits}
+        <Tuits tuits={tuits} refreshTuits={findMyTuits}
             deleteTuit={deleteTuit} />
     );
 };
